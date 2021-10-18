@@ -12,9 +12,8 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-//   let postNum = -1;
+
   for (const post of postData) {
-    // postNum++
     await Post.create({
       ...post,
       user_id: users[Math.floor(Math.random() * users.length)].id,
