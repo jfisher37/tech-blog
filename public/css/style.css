@@ -140,8 +140,12 @@ img {
 
 .card-body {
   font-size: 1.4rem;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
+}
+
+.card header {
+  text-align: left;
 }
 
 .gallery-name {
@@ -161,4 +165,8 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+}
+
+#home-posts{
+  width: 100%;
 }
