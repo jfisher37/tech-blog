@@ -42,5 +42,16 @@
     </section>
   {{/each}}
 </div>
+<div id="add-comment-btn-cont">
+<button id="add-comment-btn" class="btn">Create a new comment?</button>
+</div>
+<div id="new-comment">
+   <form class="form" id="new-comment-form">
+        <label for="new-comment-content">Content:</label>
+        <textarea class="form-input" type="text" id="new-comment-content" placeholder="Enter new comment here"/></textarea>
+        <br>
+        <button id="submit-comment-btn" class="btn">Create comment</button>
+  </form>
+</div>
 <p id="post-user-id">{{posts.id}}</p>
 <script src="/js/post.js"></script>

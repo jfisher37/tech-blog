@@ -178,17 +178,17 @@ img {
 
 }
 
-#add-post-btn{
+#add-post-btn, #add-comment-btn{
   cursor: pointer;
 
 }
 
-#new-post, #update-post{
+#new-post, #update-post, #new-comment{
  display: none;
  width: 100%;
 }
 
-#new-post-form, #update-post-form{
+#new-post-form, #update-post-form, #new-comment-form{
   margin-top: 20px;
   display: flex;
   flex-direction: column;

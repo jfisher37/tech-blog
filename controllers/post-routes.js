@@ -70,4 +70,19 @@ router.get('/:id', async (req, res) => {
     }
   });
 
+  router.post('/:id', async (req, res) => {
+    try {
+       await Comment.create({
+        content: req.body.content,
+        user_id: req.session.user_id,
+        post_id: req.params.id
+      });
+      console.log("new comment added");
+      res.status(200).json("hey");
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
 module.exports = router;

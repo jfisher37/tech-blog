@@ -2,9 +2,10 @@ const updatePostBtn = document.getElementById('update-post-btn');
 const deletePostBtn = document.getElementById('delete-post-btn');
 const updatePostForm = document.getElementById('update-post');
 const postNumEl = document.getElementById('post-user-id').innerHTML;
+const newCommentForm = document.getElementById('new-comment');
+const newCommentBtn = document.getElementById('add-comment-btn');
 
-console.log(postNumEl);
-
+if(updatePostBtn){
 updatePostBtn.addEventListener("click", () => {
     updatePostForm.setAttribute("style", "display: inline-block;")
 })
@@ -27,6 +28,34 @@ updatePostForm.addEventListener("submit", async (e) => {
       document.location.replace(`/post/${postNumEl}`);
     } else {
       alert('Failed to update post.');
+    }
+  }
+}
+)
+}
+newCommentBtn.addEventListener("click", () => {
+    console.log("here!");
+    newCommentBtn.setAttribute("style", "display: none;");
+    newCommentForm.setAttribute("style", "display: inline-block;")
+})
+
+newCommentForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+  const content = document.querySelector('#new-comment-content').value.trim();
+
+  if (content) {
+    const response = await fetch(`/post/${postNumEl}`, {
+      method: 'POST',
+      body: JSON.stringify({ content }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        console.log(response);
+      document.location.replace(`/post/${postNumEl}`);
+    } else {
+      alert('Failed to add comment.');
     }
   }
 }
