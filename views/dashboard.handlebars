@@ -1,0 +1,15 @@
+
+<div id="home-posts">
+{{#each user.posts as |post|}}
+<section class="card">
+  <a href="/posts/{{post.id}}">
+    <header>{{post.title}}</header>
+
+    <div class="card-body">
+     <p>{{post.content}}</p>
+    </div>
+  </a>
+</section>
+{{/each}}
+</div>
+
