@@ -30,31 +30,44 @@ router.get('/:id', async (req, res) => {
       } else {
       posts = postData.get({ plain: true });
       }
-      console.log({posts});
   
+      let ownedPost = false;
+      if (req.session.user_id === posts.user_id){
+        ownedPost = true
+      } ;
+
+      
       res.render('post', {
         posts,
         loggedIn: req.session.loggedIn,
+        ownedPost,
       });
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
-
-//   router.post('/:id', async (req, res) => {
-//     try {
-//        await Post.create({
-//         title: req.body.title,
-//         content: req.body.content,
-//         user_id: req.session.user_id,
-//       });
-//       console.log("new post added");
-//       res.status(200).json("hey");
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   });
+    
+  router.put('/:id', async (req, res) => {
+      console.log("Made it Here");
+    try {
+       await Post.update({
+        title: req.body.title,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+      );
+      console.log("post updated");
+      res.status(200).json("hey");
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
 
 module.exports = router;

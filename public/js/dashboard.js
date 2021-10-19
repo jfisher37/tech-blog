@@ -29,4 +29,6 @@ newPostForm.addEventListener("submit", async (e) => {
 }
 )
 
+console.log("DASHBOARD");
+
 

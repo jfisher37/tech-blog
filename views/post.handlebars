@@ -1,21 +1,46 @@
- <div id="single-post">
-<section class="card">
+<div id="single-post">
+  <section class="card">
     <header>{{posts.title}}</header>
 
     <div class="card-body">
-     <p>{{posts.content}}</p>
-     <p>(from {{posts.user.name}} on {{format_date posts.date_created}})</p>
+      <p>{{posts.content}}</p>
+      <p>(from {{posts.user.name}} on {{format_date posts.date_created}})</p>
     </div>
-</section>
+    {{#if ownedPost}}
+    <div class="update-delete-buttons">
+      <button id="update-post-btn" class="btn">Update post</button>
+      <button id="delete-post-btn" class="btn">Delete post</button>
+    </div>
+    {{/if}}
+  </section>
 </div>
 <br>
- <div id="comments">
-     {{#each posts.comments as |comment|}}
- <section class="card">
-    <header>Comment from {{format_date date_created}}</header>
-    <div class="card-body">
-     <p>{{content}}</p>
-    </div>
-</section>
-    {{/each}}
+{{#if ownedPost}}
+<div id="update-post">
+   <form class="form" id="update-post-form">
+        <label for="update-post-title">Title:</label>
+        <input class="form-input" type="text" id="update-post-title" placeholder="Enter title here"/>
+        <label for="update-post-content">Content:</label>
+        <textarea class="form-input" type="text" id="update-post-content" placeholder="Enter new post here"/></textarea>
+        <br>
+        <button id="submit-post-btn" class="btn">Update post</button>
+  </form>
 </div>
+{{/if}}
+<br />
+<div id="comments">
+  {{#each posts.comments as |comment|}}
+    <section class="card">
+      <header>Comment from {{format_date date_created}}</header>
+      <div class="card-body">
+        <p>{{content}}</p>
+      </div>
+      <div class="update-delete-buttons">
+        <button class="btn update-btn">Update comment</button>
+        <button class="btn delete-btn">Delete comment</button>
+      </div>
+    </section>
+  {{/each}}
+</div>
+<p id="post-user-id">{{posts.id}}</p>
+<script src="/js/post.js"></script>

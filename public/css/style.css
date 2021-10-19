@@ -183,12 +183,12 @@ img {
 
 }
 
-#new-post{
+#new-post, #update-post{
  display: none;
  width: 100%;
 }
 
-#new-post-form{
+#new-post-form, #update-post-form{
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -201,4 +201,8 @@ img {
 
 #comments{
   width: 100%
+}
+
+#post-user-id{
+  display: none;
 }
