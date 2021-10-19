@@ -194,3 +194,11 @@ img {
   flex-direction: column;
   align-items: center;
 }
+
+#single-post{
+  width: 100%;
+}
+
+#comments{
+  width: 100%
+}

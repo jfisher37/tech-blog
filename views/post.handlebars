@@ -1,0 +1,21 @@
+ <div id="single-post">
+<section class="card">
+    <header>{{posts.title}}</header>
+
+    <div class="card-body">
+     <p>{{posts.content}}</p>
+     <p>(from {{posts.user.name}} on {{format_date posts.date_created}})</p>
+    </div>
+</section>
+</div>
+<br>
+ <div id="comments">
+     {{#each posts.comments as |comment|}}
+ <section class="card">
+    <header>Comment from {{format_date date_created}}</header>
+    <div class="card-body">
+     <p>{{content}}</p>
+    </div>
+</section>
+    {{/each}}
+</div>
