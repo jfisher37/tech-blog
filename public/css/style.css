@@ -170,3 +170,27 @@ img {
 #home-posts{
   width: 100%;
 }
+
+#add-post-area{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+}
+
+#add-post-btn{
+  cursor: pointer;
+
+}
+
+#new-post{
+ display: none;
+ width: 100%;
+}
+
+#new-post-form{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

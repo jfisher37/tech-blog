@@ -1,5 +1,6 @@
 
 <div id="home-posts">
+{{#if user.posts}}  
 {{#each user.posts as |post|}}
 <section class="card">
   <a href="/posts/{{post.id}}">
@@ -11,5 +12,20 @@
   </a>
 </section>
 {{/each}}
+{{/if}}  
+<div id="add-post-area">
+<button id="add-post-btn" class="btn">Create a new post?</button>
 </div>
-
+<div id="new-post">
+   <form class="form" id="new-post-form">
+        <label for="new-post-title">Title:</label>
+        <input class="form-input" type="text" id="new-post-title" placeholder="Enter title here"/>
+        <label for="new-post-content">Content:</label>
+        <textarea class="form-input" type="text" id="new-post-content" placeholder="Enter new post here"/></textarea>
+        <br>
+        <button id="submit-post-btn" class="btn">Create post</button>
+  </form>
+</div>
+</div>
+</div>
+<script src="./js/dashboard.js"></script>
