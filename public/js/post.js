@@ -33,6 +33,21 @@ updatePostForm.addEventListener("submit", async (e) => {
 }
 )
 }
+if(deletePostBtn){
+    deletePostBtn.addEventListener("click", async () => {
+        const response = await fetch(`/post/${postNumEl}`, {
+            method: 'DELETE',
+          });
+      
+          if (response.ok) {
+              console.log(response);
+            document.location.replace(`/dashboard`);
+          } else {
+            alert('Failed to delete post.');
+          }
+    })
+    }
+
 newCommentBtn.addEventListener("click", () => {
     console.log("here!");
     newCommentBtn.setAttribute("style", "display: none;");
@@ -60,3 +75,32 @@ newCommentForm.addEventListener("submit", async (e) => {
   }
 }
 )
+
+// if(updatePostBtn){
+//     updatePostBtn.addEventListener("click", () => {
+//         updatePostForm.setAttribute("style", "display: inline-block;")
+//     })
+    
+//     updatePostForm.addEventListener("submit", async (e) => {
+//         e.preventDefault();
+    
+//       const title = document.querySelector('#update-post-title').value.trim();
+//       const content = document.querySelector('#update-post-content').value.trim();
+    
+//       if (title && content) {
+//         const response = await fetch(`/post/${postNumEl}`, {
+//           method: 'PUT',
+//           body: JSON.stringify({ title, content }),
+//           headers: { 'Content-Type': 'application/json' },
+//         });
+    
+//         if (response.ok) {
+//             console.log(response);
+//           document.location.replace(`/post/${postNumEl}`);
+//         } else {
+//           alert('Failed to update post.');
+//         }
+//       }
+//     }
+//     )
+//     }

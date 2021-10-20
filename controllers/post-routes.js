@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
           {
             model: Comment,
             include: [User],
-            attributes: ['content', 'date_created'],
+            attributes: ['content', 'date_created', 'user_id'],
           },
           {
             model: User,
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
         ownedPost = true
       } ;
 
-      
+
       res.render('post', {
         posts,
         loggedIn: req.session.loggedIn,
@@ -51,7 +51,6 @@ router.get('/:id', async (req, res) => {
   });
     
   router.put('/:id', async (req, res) => {
-      console.log("Made it Here");
     try {
        await Post.update({
         title: req.body.title,
@@ -71,6 +70,23 @@ router.get('/:id', async (req, res) => {
     }
   });
 
+  router.delete('/:id', async (req, res) => {
+    try {
+       await Post.destroy(
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+      );
+      console.log("post deleted");
+      res.status(200).json("hey");
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
   router.post('/:id', async (req, res) => {
     try {
        await Comment.create({
@@ -79,6 +95,25 @@ router.get('/:id', async (req, res) => {
         post_id: req.params.id
       });
       console.log("new comment added");
+      res.status(200).json("hey");
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+  router.put('/comment/:id', async (req, res) => {
+    try {
+       await Comment.update({
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+      );
+      console.log("comment updated");
       res.status(200).json("hey");
     } catch (err) {
       console.log(err);
