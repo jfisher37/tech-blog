@@ -34,7 +34,11 @@
       <header>Comment from {{comment.user.name}} on {{format_date date_created}}</header>
       <div class="card-body">
         <p>{{content}}</p>
+        {{#each ids}}
+        <p>w</p>
+        {{/each}}
       </div>
+  
       <div class="update-delete-buttons">
         <button class="btn update-btn">Update comment</button>
         <button class="btn delete-btn">Delete comment</button>

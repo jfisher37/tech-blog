@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
           {
             model: Comment,
             include: [User],
-            attributes: ['content', 'date_created', 'user_id'],
+            attributes: ['content', 'date_created', 'user_id', 'id'],
           },
           {
             model: User,
@@ -32,6 +32,13 @@ router.get('/:id', async (req, res) => {
       posts = postData.get({ plain: true });
       }
   
+      const commentIdArr = [];
+      if(posts.comments.length){
+      for (let i = 0; i < posts.comments.length; i++){
+        commentIdArr.push(posts.comments[i].user_id);
+      }}
+console.log(commentIdArr);
+
       let ownedPost = false;
       if (req.session.user_id === posts.user_id){
         ownedPost = true
@@ -42,6 +49,7 @@ router.get('/:id', async (req, res) => {
         posts,
         loggedIn: req.session.loggedIn,
         ownedPost,
+        ids: commentIdArr,
       });
 
     } catch (err) {
