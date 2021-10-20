@@ -7,8 +7,8 @@ module.exports = {
         new Date(date).getFullYear()
       }`;
     },
-    ownedComment: (commentIdArr) => {
-      console.log(commentIdArr.length);
+  //   ownedComment: (commentIdArr) => {
+  //     console.log(commentIdArr.length);
   //     for (let i = 0; i < 1; i++){
   //     if (commentIdArr[i] === req.session.user_id){
   //         commentIdArr.shift();
@@ -18,6 +18,6 @@ module.exports = {
   //         return false
   //     }
   // }
-},
+// },
   };
   
