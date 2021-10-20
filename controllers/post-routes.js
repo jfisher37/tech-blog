@@ -49,7 +49,7 @@ console.log(commentIdArr);
         posts,
         loggedIn: req.session.loggedIn,
         ownedPost,
-        ids: commentIdArr,
+        // ids: commentIdArr,
       });
 
     } catch (err) {
